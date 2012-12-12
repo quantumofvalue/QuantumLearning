@@ -1,7 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntroductionToTDD_UnitTests", "IntroductionToTDD_UnitTests\IntroductionToTDD_UnitTests.csproj", "{AAF41537-48C3-4CCC-925F-5D69D49FB572}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntroTDD_Module4_UnitTests", "IntroTDD_Module4_UnitTests\IntroTDD_Module4_UnitTests.csproj", "{7CE3B1C1-4452-4AD7-8D3E-FCB1248105A7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntroTDD_Module4_Library", "IntroTDD_Module4_Library\IntroTDD_Module4_Library.csproj", "{F7879251-A26C-41BC-9AD9-05F9AC48CAF6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,10 +11,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{AAF41537-48C3-4CCC-925F-5D69D49FB572}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AAF41537-48C3-4CCC-925F-5D69D49FB572}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AAF41537-48C3-4CCC-925F-5D69D49FB572}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AAF41537-48C3-4CCC-925F-5D69D49FB572}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7CE3B1C1-4452-4AD7-8D3E-FCB1248105A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CE3B1C1-4452-4AD7-8D3E-FCB1248105A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CE3B1C1-4452-4AD7-8D3E-FCB1248105A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CE3B1C1-4452-4AD7-8D3E-FCB1248105A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7879251-A26C-41BC-9AD9-05F9AC48CAF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7879251-A26C-41BC-9AD9-05F9AC48CAF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7879251-A26C-41BC-9AD9-05F9AC48CAF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7879251-A26C-41BC-9AD9-05F9AC48CAF6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
