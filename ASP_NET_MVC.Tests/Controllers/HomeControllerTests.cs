@@ -99,7 +99,7 @@ namespace ASP_NET_MVC.Tests.Controllers
             {
                 HomeController homeController = new HomeController(itemRepositoryMock);
                 ViewResult result = homeController.Index() as ViewResult;
-
+                
                 IEnumerable<Item> actualItems = (IEnumerable<Item>)result.ViewData.Model;
                 Assert.IsNotNull(actualItems);
                 CollectionAssert.AreEqual(actualItems.ToList(), expectedItems);

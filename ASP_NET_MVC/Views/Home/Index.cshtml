@@ -4,4 +4,25 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+@foreach (var item in Model){
+    <p>@item.ID @item.ItemText</p>
+}
+
+<h2>@ViewBag.Info</h2>
+@using (Html.BeginForm("Create","Home")) {
+    <fieldset> 
+        <legend>Walking Skeleton</legend> 
+
+        @Html.Hidden("ID")
+ 
+        <div class="editor-label"> 
+            @Html.Label("ItemText","Item Text:")
+        </div> 
+        <div class="editor-field">
+            @Html.TextBox("ItemText") 
+        </div>  
+        <p> 
+            <input type="submit" value="Add" id="add_button"/> 
+        </p> 
+    </fieldset> 
+} 

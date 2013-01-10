@@ -12,6 +12,10 @@ namespace ASP_NET_MVC.Controllers
     {
         ItemRepository _itemRepository;
 
+        public HomeController() : this(new ItemDatabaseRepository())
+        {
+        }
+
         public HomeController(ItemRepository itemRepository)
         {
             _itemRepository = itemRepository;
@@ -20,8 +24,8 @@ namespace ASP_NET_MVC.Controllers
         // GET: /Home/
 
         public ActionResult Index()
-        {
-            return View("Index",_itemRepository.GetAllItems());
+        {          
+            return View("Index", _itemRepository.GetAllItems());
         }
 
         [HttpPost]

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Data.Entity;
 
 namespace ASP_NET_MVC.Models
 {
@@ -10,4 +11,9 @@ namespace ASP_NET_MVC.Models
         public int ID { get; set; }
         public string ItemText { get; set; }
     }
+
+    public class ItemDBContext : DbContext
+    {
+        public DbSet<Item> Items { get; set; }
+    } 
 }

@@ -127,6 +127,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Item.cs" />
+    <Compile Include="Models\ItemDatabaseRepository.cs" />
     <Compile Include="Models\ItemRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -82,13 +82,11 @@ this.ScenarioSetup(scenarioInfo);
 #line 8
  testRunner.When("I visit \"~/\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 9
-     testRunner.And("I enter \"item\" into the \"item\" field", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+    testRunner.And("I enter \"item\" into the \"ItemText\" field", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 10
-     testRunner.And("I click \"Add\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+    testRunner.And("I click \"add_button\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 11
-     testRunner.Then("I should be redirected to \"~/items\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 12
-     testRunner.And("I should see \"item\" on the page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+    testRunner.Then("I should see \"item\" on the page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
