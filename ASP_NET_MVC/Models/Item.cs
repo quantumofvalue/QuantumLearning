@@ -14,6 +14,15 @@ namespace ASP_NET_MVC.Models
 
     public class ItemDBContext : DbContext
     {
+        public ItemDBContext()
+        {
+        }
+
+        public ItemDBContext(string connectionString)
+            : base(connectionString)
+        {
+        }
+
         public DbSet<Item> Items { get; set; }
     } 
 }

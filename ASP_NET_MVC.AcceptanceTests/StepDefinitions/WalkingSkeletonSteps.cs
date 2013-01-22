@@ -7,6 +7,10 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using OpenQA.Selenium.IE;
 
+using ASP_NET_MVC.Models;
+using System.Configuration;
+using System.IO;
+
 namespace ASP_NET_MVC.AcceptanceTests.StepDefinitions
 {
     [Binding]
@@ -16,6 +20,42 @@ namespace ASP_NET_MVC.AcceptanceTests.StepDefinitions
         public static void BeforeFeature()
         {
             BrowserDriverInitialize();
+            
+            var dataDirectory = ConfigurationManager.AppSettings["DataDirectory"];
+            var absoluteDataDirectory = Path.GetFullPath(dataDirectory);
+            AppDomain.CurrentDomain.SetData("DataDirectory", absoluteDataDirectory);
+
+            string PATH = Environment.GetEnvironmentVariable("JYOTHI");
+
+            System.Console.WriteLine("PATH:"+PATH);
+
+            if (PATH!=null && 0 == PATH.Length)
+            {
+                System.Console.WriteLine("PATH is an empty string");
+            }
+            else if (PATH == null)
+            {
+                System.Console.WriteLine("PATH is NOT an empty string - it is null!");
+            }
+
+            
+
+
+            ItemDBContext db = new ItemDBContext(_connectionString);
+            //Item item = db.Items.Find(2);
+            //db.Items.SqlQuery("DELETE * FROM Items");
+            //db.Database.SqlQuery("DELETE FROM Items;");
+            //db.Database.ExecuteSqlCommand("DELETE FROM Items;");
+            db.Database.ExecuteSqlCommand("TRUNCATE TABLE Items;");
+            //Item item = new Item { ItemText = "Super Test Item Text" };
+
+            //db.Items.Add(item);
+            //foreach (Item item in db.Items)
+            //{
+            //    db.Items.Remove(item);
+            //}
+            //db.Items.Remove(item);
+            db.SaveChanges();
         }
 
         [AfterFeature()]

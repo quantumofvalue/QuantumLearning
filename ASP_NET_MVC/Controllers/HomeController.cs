@@ -24,8 +24,9 @@ namespace ASP_NET_MVC.Controllers
         // GET: /Home/
 
         public ActionResult Index()
-        {          
+        {
             return View("Index", _itemRepository.GetAllItems());
+            //return View("Index");
         }
 
         [HttpPost]

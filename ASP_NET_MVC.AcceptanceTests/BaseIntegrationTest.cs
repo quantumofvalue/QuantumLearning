@@ -1,15 +1,17 @@
 ﻿using System;
+using System.Configuration;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 using OpenQA.Selenium;
 using OpenQA.Selenium.IE;
+using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Support.UI;
 
 
 public class BaseIntegrationTest
 {
-    public const string BaseUrl = "http://localhost:4000";
+    public static string BaseUrl = GetBaseURL();
 
     // specify if our web-app uses a virtual path   
     private const string VirtualPath = "";
@@ -18,6 +20,48 @@ public class BaseIntegrationTest
     private static int _testClassesRunning;
 
     private static readonly IWebDriver StaticDriver = CreateDriverInstance();
+
+    private static readonly string _environment = GetCurrentEnvironment();
+    protected static readonly string _connectionString = GetConnectionString();
+
+    private static string GetCurrentEnvironment()
+    {
+        string environment = "DEVELOPMENT";
+        if (null != System.Environment.GetEnvironmentVariable("EFM_ENV"))
+        {
+            environment = "TEST";
+        }
+        return environment;
+    }
+
+    private static string GetConnectionString()
+    {
+        if ("DEVELOPMENT" == GetCurrentEnvironment())
+        {
+            return ConfigurationManager.AppSettings["DevelopmentConnectionString"];
+        }
+        else
+        {
+            return ConfigurationManager.AppSettings["TestConnectionString"];
+        }
+    }
+
+    public String ConnectionString
+    {
+        get { return _connectionString; }
+    }
+
+    private static string GetBaseURL()
+    {
+        if ("DEVELOPMENT" == GetCurrentEnvironment())
+        {
+            return ConfigurationManager.AppSettings["DevelopmentBaseUrl"];
+        }
+        else
+        {
+            return ConfigurationManager.AppSettings["TestBaseUrl"];
+        }
+    }
 
     static BaseIntegrationTest()
     {
@@ -188,7 +232,7 @@ public class BaseIntegrationTest
         }
     }
 
-    private static IWebDriver CreateDriverInstance(string baseUrl = BaseUrl)
+    private static IWebDriver CreateDriverInstance()
     {
         return new InternetExplorerDriver();
         //return new FirefoxDriver();
