@@ -5,7 +5,7 @@
 }
 
 @foreach (var item in Model){
-    <p>@item.ID @item.ItemText</p>
+    <a id="@item.ID.ToString()" href="@Url.Action("Items","Home",new {id=item.ID})"><p class="item">@item.ID @item.ItemText</p></a>
 }
 
 <h2>@ViewBag.Info</h2>

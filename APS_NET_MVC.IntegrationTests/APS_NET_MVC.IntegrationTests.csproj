@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{178B1ABA-BF19-45A4-BB96-7B0DEA533108}</ProjectGuid>
+    <ProjectGuid>{47782D34-F594-4FCA-B4B2-B6F65F9A3DD7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ASP_NET_MVC.AcceptanceTests</RootNamespace>
-    <AssemblyName>ASP_NET_MVC.AcceptanceTests</AssemblyName>
+    <RootNamespace>APS_NET_MVC.IntegrationTests</RootNamespace>
+    <AssemblyName>APS_NET_MVC.IntegrationTests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -35,25 +35,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Castle.Core">
-      <HintPath>..\packages\Castle.Core.3.0.0.4001\lib\net35\Castle.Core.dll</HintPath>
-    </Reference>
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Rhino.Mocks">
+      <HintPath>..\packages\RhinoMocks.3.6.1\lib\net\Rhino.Mocks.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="TechTalk.SpecFlow">
-      <HintPath>..\packages\SpecFlow.1.9.0\lib\net35\TechTalk.SpecFlow.dll</HintPath>
-    </Reference>
-    <Reference Include="WebDriver">
-      <HintPath>..\packages\Selenium.WebDriver.2.28.0\lib\net40\WebDriver.dll</HintPath>
-    </Reference>
-    <Reference Include="WebDriver.Support">
-      <HintPath>..\packages\Selenium.Support.2.28.0\lib\net40\WebDriver.Support.dll</HintPath>
-    </Reference>
+    <Reference Include="System.Data.Entity" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -68,40 +59,16 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="CustomerPremises.feature.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CustomerPremises.feature</DependentUpon>
-    </Compile>
-    <Compile Include="StepDefinitions\CustomerPremisesSteps.cs" />
-    <Compile Include="StepDefinitions\WalkingSkeletonSteps.cs" />
-    <Compile Include="WalkingSeleton.feature.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>WalkingSeleton.feature</DependentUpon>
-    </Compile>
-    <Compile Include="BaseIntegrationTest.cs" />
+    <Compile Include="Database\LINQExercises.cs" />
+    <Compile Include="ExampleClasses\TestItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="CustomerPremises.feature">
-      <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>CustomerPremises.feature.cs</LastGenOutput>
-    </None>
-    <None Include="packages.config" />
-    <None Include="WalkingSeleton.feature">
-      <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>WalkingSeleton.feature.cs</LastGenOutput>
-    </None>
+    <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ASP_NET_MVC\ASP_NET_MVC.csproj">
-      <Project>{e941e2e3-8ce6-4006-b701-a6027f46d942}</Project>
-      <Name>ASP_NET_MVC</Name>
-    </ProjectReference>
+    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

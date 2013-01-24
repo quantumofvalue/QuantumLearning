@@ -35,5 +35,10 @@ namespace ASP_NET_MVC.Controllers
             _itemRepository.CreateNewItem(item);
             return RedirectToAction("Index");
         }
+
+        public ActionResult Items(int id)
+        {
+            return View("Item", _itemRepository.GetItemWithId(id));
+        }
     }
 }

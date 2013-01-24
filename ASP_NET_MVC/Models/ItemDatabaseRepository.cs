@@ -19,5 +19,10 @@ namespace ASP_NET_MVC.Models
             _db.Items.Add(item);
             _db.SaveChanges();
         }
+
+        public Item GetItemWithId(int id)
+        {
+            return _db.Items.Find(id);
+        }
     }
 }

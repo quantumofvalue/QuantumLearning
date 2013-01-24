@@ -10,5 +10,6 @@ namespace ASP_NET_MVC.Models
     {
         IEnumerable<Item> GetAllItems();
         void CreateNewItem(Item item);
+        Item GetItemWithId(int id);
     }
 }

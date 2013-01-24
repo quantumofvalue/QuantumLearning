@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Configuration;
+using TechTalk.SpecFlow;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -9,7 +10,7 @@ using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Support.UI;
 
 
-public class BaseIntegrationTest
+public class BaseIntegrationTest : Steps
 {
     public static string BaseUrl = GetBaseURL();
 
@@ -19,7 +20,7 @@ public class BaseIntegrationTest
     private const int TimeOut = 30;
     private static int _testClassesRunning;
 
-    private static readonly IWebDriver StaticDriver = CreateDriverInstance();
+    private static IWebDriver StaticDriver = CreateDriverInstance();
 
     private static readonly string _environment = GetCurrentEnvironment();
     protected static readonly string _connectionString = GetConnectionString();
@@ -83,6 +84,7 @@ public class BaseIntegrationTest
             if (_testClassesRunning == 0)
             {
                 StaticDriver.Quit();
+                StaticDriver = null;
             }
         }
         catch (Exception)
@@ -93,7 +95,14 @@ public class BaseIntegrationTest
 
     public IWebDriver Driver
     {
-        get { return StaticDriver; }
+        get
+        {
+            if (null == StaticDriver)
+            {
+                StaticDriver = CreateDriverInstance();
+            }
+            return StaticDriver;
+        }
     }
 
     public void Open(string url)
