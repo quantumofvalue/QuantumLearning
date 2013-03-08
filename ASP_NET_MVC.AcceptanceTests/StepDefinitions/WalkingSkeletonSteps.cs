@@ -22,16 +22,17 @@ namespace ASP_NET_MVC.AcceptanceTests.StepDefinitions
     {
         static ItemDBContext _db;
         static string absoluteDataDirectory;
+        static String root;
 
         [BeforeFeature()]
         public static void BeforeFeature()
         {
-            String root = System.Environment.GetEnvironmentVariable("QUANTUM");
+            root = System.Environment.GetEnvironmentVariable("QUANTUM");
 
             System.Console.WriteLine("QUANTUM:{0}", root);
 
             BrowserDriverInitialize();
-
+            
             var dataDirectory = ConfigurationManager.AppSettings["DataDirectory"];
             //absoluteDataDirectory = Path.GetFullPath(dataDirectory);
             //String root = System.Environment.GetEnvironmentVariable("QUANTUM_LEARNING_HOME");
@@ -65,7 +66,7 @@ namespace ASP_NET_MVC.AcceptanceTests.StepDefinitions
         [When(@"I enter ""(.*)"" into the ""(.*)"" field")]
         public void WhenIEnterIntoTheField(string fieldText, string fieldId)
         {
-            Type(fieldId, fieldText);
+            Type(fieldId, root);
         }
         
         [When(@"I click ""(.*)""")]
