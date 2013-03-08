@@ -243,7 +243,7 @@ public class BaseIntegrationTest : Steps
 
     private static IWebDriver CreateDriverInstance()
     {
-        return new InternetExplorerDriver();
-        //return new FirefoxDriver();
+        //return new InternetExplorerDriver();
+        return new FirefoxDriver();
     }
 }

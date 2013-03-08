@@ -21,21 +21,23 @@ namespace ASP_NET_MVC.AcceptanceTests.StepDefinitions
     public class WalkingSkeletonSteps : BaseIntegrationTest
     {
         static ItemDBContext _db;
+        static string absoluteDataDirectory;
 
         [BeforeFeature()]
         public static void BeforeFeature()
         {
             BrowserDriverInitialize();
-            
-            var dataDirectory = ConfigurationManager.AppSettings["DataDirectory"];
-            var absoluteDataDirectory = Path.GetFullPath(dataDirectory);
-            AppDomain.CurrentDomain.SetData("DataDirectory", absoluteDataDirectory);                       
+
+            //var dataDirectory = ConfigurationManager.AppSettings["DataDirectory"];
+            //absoluteDataDirectory = Path.GetFullPath("dummy/");
+            AppDomain.CurrentDomain.SetData("DataDirectory", ConfigurationManager.AppSettings["DevelopmentDataDirectory"]);
+            //AppDomain.CurrentDomain.SetData("DataDirectory", absoluteDataDirectory);
         }
 
         [BeforeScenario()]
         public void BeforeScenario()
         {
-            _db = new ItemDBContext(_connectionString); 
+            _db = new ItemDBContext(@"Data Source=(LocalDB)\v11.0;AttachDbFilename=|DataDirectory|\Items.mdf;Integrated Security=True");
             _db.Database.ExecuteSqlCommand("TRUNCATE TABLE Items;");
             _db.SaveChanges();
         }
@@ -49,7 +51,7 @@ namespace ASP_NET_MVC.AcceptanceTests.StepDefinitions
         [When(@"I visit ""(.*)""")]
         public void WhenIVisit(string url)
         {
-            //OpenAbsolute("http://www.google.com");
+            //OpenAbsolute("http://localhost:4000");
             //Thread.Sleep(5000);
             Open(url);
         }
