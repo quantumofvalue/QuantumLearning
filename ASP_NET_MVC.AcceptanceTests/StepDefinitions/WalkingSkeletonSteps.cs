@@ -28,6 +28,8 @@ namespace ASP_NET_MVC.AcceptanceTests.StepDefinitions
         {
             String root = System.Environment.GetEnvironmentVariable("QUANTUM");
 
+            System.Console.WriteLine("QUANTUM:{0}", root);
+
             BrowserDriverInitialize();
 
             var dataDirectory = ConfigurationManager.AppSettings["DataDirectory"];
