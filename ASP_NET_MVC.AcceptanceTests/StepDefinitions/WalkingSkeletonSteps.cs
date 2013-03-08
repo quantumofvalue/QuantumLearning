@@ -26,12 +26,16 @@ namespace ASP_NET_MVC.AcceptanceTests.StepDefinitions
         [BeforeFeature()]
         public static void BeforeFeature()
         {
+            String root = System.Environment.GetEnvironmentVariable("QUANTUM");
+
             BrowserDriverInitialize();
 
-            //var dataDirectory = ConfigurationManager.AppSettings["DataDirectory"];
-            //absoluteDataDirectory = Path.GetFullPath("dummy/");
-            AppDomain.CurrentDomain.SetData("DataDirectory", ConfigurationManager.AppSettings["DevelopmentDataDirectory"]);
-            //AppDomain.CurrentDomain.SetData("DataDirectory", absoluteDataDirectory);
+            var dataDirectory = ConfigurationManager.AppSettings["DataDirectory"];
+            //absoluteDataDirectory = Path.GetFullPath(dataDirectory);
+            //String root = System.Environment.GetEnvironmentVariable("QUANTUM_LEARNING_HOME");
+            absoluteDataDirectory = Path.Combine(new string[] { root, dataDirectory });
+            //AppDomain.CurrentDomain.SetData("DataDirectory", ConfigurationManager.AppSettings["DevelopmentDataDirectory"]);
+            AppDomain.CurrentDomain.SetData("DataDirectory", absoluteDataDirectory);
         }
 
         [BeforeScenario()]
