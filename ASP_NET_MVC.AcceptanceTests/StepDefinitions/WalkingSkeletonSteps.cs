@@ -59,7 +59,7 @@ namespace ASP_NET_MVC.AcceptanceTests.StepDefinitions
         [When(@"I enter ""(.*)"" into the ""(.*)"" field")]
         public void WhenIEnterIntoTheField(string fieldText, string fieldId)
         {
-            Type(fieldId, fieldText);
+            Type(fieldId, "Hello");
         }
         
         [When(@"I click ""(.*)""")]
