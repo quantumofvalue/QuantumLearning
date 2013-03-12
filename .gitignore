@@ -28,6 +28,11 @@ obj/
 TestResults/
 App_Data/
 ###################
+# Database files  #
+###################
+*.mdf
+*.ldf
+###################
 # Web publish log #
 ###################
 *.Publish.xml
