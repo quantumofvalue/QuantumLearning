@@ -21,24 +21,17 @@ namespace ASP_NET_MVC.AcceptanceTests.StepDefinitions
     public class WalkingSkeletonSteps : BaseIntegrationTest
     {
         static ItemDBContext _db;
-        static string absoluteDataDirectory;
-        static String root;
 
         [BeforeFeature()]
         public static void BeforeFeature()
         {
-            root = System.Environment.GetEnvironmentVariable("QUANTUM");
-
-            System.Console.WriteLine("QUANTUM:{0}", root);
-
             BrowserDriverInitialize();
-            
+
             var dataDirectory = ConfigurationManager.AppSettings["DataDirectory"];
-            //absoluteDataDirectory = Path.GetFullPath(dataDirectory);
-            //String root = System.Environment.GetEnvironmentVariable("QUANTUM_LEARNING_HOME");
-            absoluteDataDirectory = Path.Combine(new string[] { root, dataDirectory });
-            //AppDomain.CurrentDomain.SetData("DataDirectory", ConfigurationManager.AppSettings["DevelopmentDataDirectory"]);
-            AppDomain.CurrentDomain.SetData("DataDirectory", absoluteDataDirectory);
+            
+            AppDomain.CurrentDomain.SetData("DataDirectory", Path.Combine(new string[] {
+                                                                System.Environment.GetEnvironmentVariable("QUANTUM"),
+                                                                ConfigurationManager.AppSettings["DataDirectory"] }));
         }
 
         [BeforeScenario()]
@@ -66,7 +59,7 @@ namespace ASP_NET_MVC.AcceptanceTests.StepDefinitions
         [When(@"I enter ""(.*)"" into the ""(.*)"" field")]
         public void WhenIEnterIntoTheField(string fieldText, string fieldId)
         {
-            Type(fieldId, root);
+            Type(fieldId, fieldText);
         }
         
         [When(@"I click ""(.*)""")]
