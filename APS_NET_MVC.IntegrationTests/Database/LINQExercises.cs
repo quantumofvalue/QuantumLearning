@@ -11,9 +11,9 @@ namespace APS_NET_MVC.IntegrationTests
         [TestMethod]
         public void AddingItemsToDatabase()
         {
-            var dataDirectory = ConfigurationManager.AppSettings["DataDirectory"];
-            var absoluteDataDirectory = Path.GetFullPath(dataDirectory);
-            AppDomain.CurrentDomain.SetData("DataDirectory", absoluteDataDirectory);
+            AppDomain.CurrentDomain.SetData("DataDirectory", Path.Combine(new string[] {
+                System.Environment.GetEnvironmentVariable("QUANTUM"),
+                ConfigurationManager.AppSettings["DataDirectory"] }));
 
             TestItemDBContext db = new TestItemDBContext();
 
