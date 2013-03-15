@@ -70,6 +70,12 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ASP_NET_MVC\ASP_NET_MVC.csproj">
+      <Project>{e941e2e3-8ce6-4006-b701-a6027f46d942}</Project>
+      <Name>ASP_NET_MVC</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
