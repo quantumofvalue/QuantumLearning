@@ -15,7 +15,7 @@ namespace APS_NET_MVC.IntegrationTests
         {
             AppDomain.CurrentDomain.SetData("DataDirectory", Path.Combine(new string[] {
                 System.Environment.GetEnvironmentVariable("QUANTUM"),
-                ConfigurationManager.AppSettings["DataDirectory"] }));
+                ConfigurationManager.AppSettings["DataDirectory"] }));          
 
             TestItemDBContext db = new TestItemDBContext();
 
